@@ -1,0 +1,28 @@
+name: Release
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '.*/**'
+
+jobs:
+  release:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: "[Publish] Create Release PR"
+        uses: google-github-actions/release-please-action@v3
+        with:
+          # 'release' action must use personal token to trigger 'publish' action
+          # https://github.com/google-github-actions/release-please-action/issues/533
+          # https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow
+          token: ${{ secrets.GH_TOKEN_RELEASE }}
+          release-type: python
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+          pull-request-title-pattern: "chore: release ${version}"
+          changelog-types: '[
+            {"type":"feat","section":"Features","hidden":false},
+            {"type":"fix","section":"Bug Fixes","hidden":false},
+            {"type":"chore","section":"Miscellaneous","hidden":false}
+          ]'

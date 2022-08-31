@@ -1,0 +1,3 @@
+[submodule "openkorpos_dic/dicdir"]
+	path = openkorpos_dic/dicdir
+	url = https://github.com/openkorpos/model-mecab.git

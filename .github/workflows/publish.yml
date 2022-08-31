@@ -1,0 +1,36 @@
+name: Publish
+on:
+  release:
+    types: [ published ]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: "[Checkout] Get source code"
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: "[Prepare] Set up Python"
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: "[Prepare] Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+
+      - name: "[Build] Build package"
+        run: |
+          python -m build
+
+      - name: "[Upload] Publish package"
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: ${{ secrets.PYPI_USERNAME }}
+          password: ${{ secrets.PYPI_PASSWORD }}
