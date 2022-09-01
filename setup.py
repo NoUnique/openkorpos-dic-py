@@ -9,7 +9,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="openkorpos-dic",
-    version="1.0.0",
+    version="1.0.1",
     author="Taehwan Yoo",
     author_email="kofmap@gmail.com",
     description="OpenKorPOS-dic packaged for Python",
