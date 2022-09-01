@@ -1,3 +1,7 @@
+[![Current PyPI packages](https://badge.fury.io/py/openkorpos-dic.svg)](https://pypi.org/project/openkorpos-dic/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/openkorpos-dic)](https://pypi.org/project/openkorpos-dic/)
+![Supported Platforms](https://img.shields.io/badge/platforms-all-blue)
+
 # openkorpos-dic-py
 
 This is a version of [OpenKorPOS-dic](https://github.com/openkorpos/model-mecab) packaged for use in Python with 
